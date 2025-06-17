@@ -74,7 +74,6 @@ npx expo start
  - Gorhom Bottom Sheet – Smooth modal interactions
  - i18n-js + expo-localization – Multilingual support
  - expo-sqlite – Local session history
- - react-native-svg – Rosary bead visual composition
 
 ---
 
