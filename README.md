@@ -23,8 +23,12 @@ RosaryGo is a beautifully crafted, fully offline Catholic prayer companion that 
 ## 📸 Screenshots
 
 <p align="center">
-  <img src="screenshots/screen1.jpeg" width="200" />
-  <img src="screenshots/screen2.jpeg" width="200" />
+  <img src="screenshots/1.PNG" width="200" />
+  <img src="screenshots/2.PNG" width="200" />
+  <img src="screenshots/3.PNG" width="200" />
+  <img src="screenshots/4.PNG" width="200" />
+  <img src="screenshots/5.PNG" width="200" />
+  <img src="screenshots/6.PNG" width="200" />
 </p>
 
 ---

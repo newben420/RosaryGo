@@ -61,6 +61,7 @@ const style = StyleSheet.create({
     chipContainer: {
         flexDirection: 'row',
         paddingTop: 20,
+        flexWrap: 'wrap',
     },
     chip: {
         marginRight: 20,

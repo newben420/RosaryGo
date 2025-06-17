@@ -35,7 +35,10 @@
     ],
     "locales": {
       "en": "./locales/en.json",
-      "la": "./locales/la.json"
+      "la": "./locales/la.json",
+      "fr": "./locales/fr.json",
+      "es": "./locales/es.json",
+      "pt": "./locales/pt.json"
     },
     "extra": {
       "supportsRTL": true,
