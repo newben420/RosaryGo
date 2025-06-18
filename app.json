@@ -48,7 +48,16 @@
     "extra": {
       "supportsRTL": true,
       "PRODUCTION": false,
-      "PROD": {},
+      "PROD": {
+        "BRAND": "RosaryGo",
+        "DB_NAME": "mydb.db",
+        "SPLASH_TIME_MS": 500,
+        "PAGE_REFRESH_INTERVAL_MS": 5000,
+        "MAX_SESSIONS": 1000,
+        "BORDER_RADIUS": 15,
+        "TRANSITION_MS": 300,
+        "APP_URL": "https://example.com"
+      },
       "DEV": {
         "BRAND": "RosaryGo",
         "DB_NAME": "mydb.db",
@@ -62,6 +71,10 @@
       "eas": {
         "projectId": "ae6dabbe-c26a-41fb-a3eb-dd9caf76f761"
       }
+    },
+    "owner": "newben420",
+    "updates": {
+      "enabled": false
     }
   }
 }

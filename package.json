@@ -30,7 +30,8 @@
     "react-native-safe-area-context": "5.4.0",
     "yup": "^1.6.1",
     "expo-screen-orientation": "~8.1.7",
-    "expo-store-review": "~8.1.5"
+    "expo-store-review": "~8.1.5",
+    "expo-system-ui": "~5.0.8"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",
