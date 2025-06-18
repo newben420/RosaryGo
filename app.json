@@ -16,14 +16,16 @@
       "supportsTablet": true,
       "infoPlist": {
         "ExpoLocalization_supportsRTL": true
-      }
+      },
+      "bundleIdentifier": "com.newben420.RosaryGo"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "edgeToEdgeEnabled": true
+      "edgeToEdgeEnabled": true,
+      "package": "com.newben420.RosaryGo"
     },
     "web": {
       "favicon": "./assets/favicon.png"
@@ -38,7 +40,10 @@
       "la": "./locales/la.json",
       "fr": "./locales/fr.json",
       "es": "./locales/es.json",
-      "pt": "./locales/pt.json"
+      "pt": "./locales/pt.json",
+      "it": "./locales/it.json",
+      "tl": "./locales/tl.json",
+      "sw": "./locales/sw.json"
     },
     "extra": {
       "supportsRTL": true,
