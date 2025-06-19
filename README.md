@@ -43,7 +43,7 @@ RosaryGo is available on major app stores — just download and start praying. N
 
 ### 📦 Preview APK
 
-Download the latest test build here: [Download APK](https://drive.google.com/file/d/1m99o0Qa8ACcLmURzTbaV9tHNAVDZy36a/view?usp=sharing)
+Download the latest test build here: [Download APK](https://drive.google.com/file/d/1Ia2s3gP41m7MlHSaZzcUrhv9QhDUWIy4/view?usp=sharing)
 
 ### 💻 For Developers
 
