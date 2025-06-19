@@ -30,6 +30,7 @@ RosaryGo is a beautifully crafted, fully offline Catholic prayer companion that 
   <img src="screenshots/5.PNG" width="200" />
   <img src="screenshots/6.PNG" width="200" />
   <img src="screenshots/7.png" width="200" />
+  <img src="screenshots/8.PNG" width="200" />
 </p>
 
 ---
@@ -39,6 +40,10 @@ RosaryGo is a beautifully crafted, fully offline Catholic prayer companion that 
 ### 📱 For Users
 
 RosaryGo is available on major app stores — just download and start praying. No account. No distractions. Just prayer.
+
+### 📦 Preview APK
+
+Download the latest test build here: [Download APK](https://drive.google.com/file/d/1m99o0Qa8ACcLmURzTbaV9tHNAVDZy36a/view?usp=sharing)
 
 ### 💻 For Developers
 

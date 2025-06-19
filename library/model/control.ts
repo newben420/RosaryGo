@@ -310,7 +310,7 @@ export const generatePages = (session: Session): Record<string, PageContent> => 
             prayer: [
                 { t: "PRAY.LUP", r: "PRAY.LUP2" },
                 { v: "PRAY.HH_SUBV_1", r: "PRAY.R_HAVE" },
-                { v: "PRAY.HH_SUBV_2", r: "PRAY.R_HAVE" },
+                { v: "PRAY.HH_SUBV_2", r: "PRAY.R_PRAY" },
                 { v: "PRAY.HH_SUBV_3", r: "PRAY.R_PRAY" },
                 { v: "PRAY.HH_SUBV_4", r: "PRAY.R_PRAY" },
                 { v: "PRAY.HH_SUBV_5", r: "PRAY.R_PRAY" },

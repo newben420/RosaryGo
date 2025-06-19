@@ -42,7 +42,7 @@ export default function Intention({ theme, showIntention, setShowIntention, setS
                         autoFocus={true}
                         multiline={false}
                         numberOfLines={1}
-                        maxLength={100}
+                        maxLength={256}
                         placeholder={i18n.t("INTENTION_PLACEHOLDER")}
                     />
                 </Dialog.Content>
