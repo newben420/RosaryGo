@@ -17,7 +17,7 @@
       "infoPlist": {
         "ExpoLocalization_supportsRTL": true
       },
-      "bundleIdentifier": "com.newben420.RosaryGo"
+      "bundleIdentifier": "com.newben420.rosarygo"
     },
     "android": {
       "adaptiveIcon": {
@@ -25,7 +25,7 @@
         "backgroundColor": "#ffffff"
       },
       "edgeToEdgeEnabled": true,
-      "package": "com.newben420.RosaryGo"
+      "package": "com.newben420.rosarygo"
     },
     "web": {
       "favicon": "./assets/favicon.png"
