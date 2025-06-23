@@ -1,10 +1,11 @@
 import React from 'react';
-import { StyleSheet, ScrollView } from 'react-native';
+import { StyleSheet } from 'react-native';
 import { Text, Portal, Modal, MD3Theme } from 'react-native-paper';
 import { i18n } from '../library/i18n';
 import { Site } from '../site';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { StorageKeys } from '../library/storageKeys';
+import { ScrollView } from 'react-native-gesture-handler';
 
 interface WelcomeProps {
     theme: MD3Theme;

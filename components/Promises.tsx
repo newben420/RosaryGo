@@ -1,8 +1,9 @@
 import React from 'react';
-import { View, StyleSheet, ScrollView } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import { Text, Portal, Modal, MD3Theme, Button, Icon, Card } from 'react-native-paper';
 import { i18n } from '../library/i18n';
 import { Site } from '../site';
+import { ScrollView } from 'react-native-gesture-handler';
 
 interface PromisesProps {
     theme: MD3Theme;

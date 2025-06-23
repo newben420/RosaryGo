@@ -21,6 +21,7 @@ import History from './History';
 import Promises from './Promises';
 import Welcome from './Welcome';
 import { CustomLightTheme as MD3LightTheme, CustomDarkTheme as MD3DarkTheme } from '../library/themes';
+import { ScrollView } from 'react-native-gesture-handler';
 
 interface PageProps {
     theme: MD3Theme;
@@ -201,7 +202,8 @@ export default function Page({ theme, saveTheme, themeMode, isDark }: PageProps)
                     {/* {!!activeIndex && <Image style={{ opacity: 0.05, objectFit: 'cover', width: '100%', height: '100%', position: 'absolute', top: 0, zIndex: 0, left: 0, }} source={session?.is_dm ? require('./../assets/img/dmbg.png') : require('./../assets/img/hrbg.png')} />} */}
                     {!!p.rosary && <Animated.View key={p.rosary ? 1000 : 1001} entering={FadeIn.duration(Site.TRANSITION_MS)} exiting={FadeOut.duration(Site.TRANSITION_MS)} style={{ flex: 1, position: 'absolute', zIndex: 0, width: '100%', height: '100%', alignItems: 'flex-start', justifyContent: 'flex-start', padding: 20, paddingBottom: 100, }}><Image style={{ opacity: 0.15, objectFit: 'contain', width: '100%', height: '100%', }} source={require('./../assets/img/r/r2.png')} /></Animated.View>}
                     {!!p.rosary && <Animated.View key={p.rosary} entering={FadeIn.duration(Site.TRANSITION_MS)} exiting={FadeOut.duration(Site.TRANSITION_MS)} style={{ flex: 1, position: 'absolute', zIndex: 0, width: '100%', height: '100%', alignItems: 'flex-start', justifyContent: 'flex-start', padding: 20, paddingBottom: 100, }}><Image style={{ opacity: 1, objectFit: 'contain', width: '100%', height: '100%', }} source={RosaryMap[p.rosary.toString()]} /></Animated.View>}
-                    {!!activeIndex && <Animated.ScrollView keyboardShouldPersistTaps="handled" style={{ ...style.noticeView, }} entering={SlideInRight.duration(Site.TRANSITION_MS)} exiting={SlideOutLeft.duration(Site.TRANSITION_MS)} key={activeIndex}>
+                    {!!activeIndex && <Animated.View style={{ flex: 1 }} entering={SlideInRight.duration(Site.TRANSITION_MS)} exiting={SlideOutLeft.duration(Site.TRANSITION_MS)} key={activeIndex}>
+                        <ScrollView style={{ ...style.noticeView, }}>
                         {p.type == "intro" && <View style={{ ...style.introCont }}>
                             {!!p.picture && <Image style={{ height: 150, width: 150, resizeMode: 'contain' }} source={isDark ? (imageMap[p.picture + '_dark'] || imageMap[p.picture]) : imageMap[p.picture]} />}
                             {!!p.subtitle && <Text style={{ fontFamily: 'secondary2', marginTop: p.subtype == "big" ? 30 : 30, textAlign: 'center' }} variant={p.subtype == "big" ? 'displaySmall' : 'headlineLarge'}>{p.extraSub && `${p.extraSub}`} {p.subtype == "big" ? i18n.t(p.subtitle) : i18n.t(p.subtitle)}</Text>}
@@ -221,7 +223,8 @@ export default function Page({ theme, saveTheme, themeMode, isDark }: PageProps)
                                 {i != ((p.prayer?.length || -1) - 1) && <Divider style={{ marginVertical: 30, opacity: 0 }} />}
                             </View>)}
                         </View>}
-                    </Animated.ScrollView>}
+                        </ScrollView>
+                    </Animated.View>}
                     {!activeIndex && <View style={{
                         flexDirection: 'column',
                         alignItems: 'center',

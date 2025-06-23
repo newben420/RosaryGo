@@ -2,7 +2,6 @@ import * as SQLite from 'expo-sqlite';
 import { Site } from '../site';
 import { Log } from './log';
 import { Session } from './model/session';
-import { add } from '@shopify/react-native-skia';
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { StorageKeys } from './storageKeys';
 

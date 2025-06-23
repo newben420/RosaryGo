@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, StyleSheet, ScrollView } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import { Text, Portal, Modal, MD3Theme, Button, Icon, ActivityIndicator, Card } from 'react-native-paper';
 import { i18n } from '../library/i18n';
 import { Site } from '../site';
@@ -10,6 +10,7 @@ import { getMysteryIndex } from '../library/model/mysteries';
 import { getDateTime, getTimeElapsed } from '../library/dateTime';
 import { Notifier, NotifierComponents } from 'react-native-notifier';
 import Animated, { FadeIn, FadeOut } from 'react-native-reanimated';
+import { ScrollView } from 'react-native-gesture-handler';
 
 interface HistoryProps {
     theme: MD3Theme;
