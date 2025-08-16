@@ -20,6 +20,7 @@ import { CustomDarkTheme, CustomLightTheme } from "./library/themes";
 SplashScreen.preventAutoHideAsync();
 import * as Font from 'expo-font';
 import { NotificationProvider } from "./components/notification/NotificationContext";
+import { StatusBar } from "expo-status-bar";
 
 
 
@@ -42,6 +43,8 @@ function MainApp({ isReady, onLayoutRootView }: MainAppProps) {
 
   const theme = useMemo(() => (isDark ? CustomDarkTheme : CustomLightTheme), [isDark]);
 
+  const statsTheme = useMemo(() => isDark ? "light" : "dark", [isDark]);
+
   useEffect(() => {
     (async () => {
       const saved = await AsyncStorage.getItem(StorageKeys.THEME);
@@ -62,19 +65,22 @@ function MainApp({ isReady, onLayoutRootView }: MainAppProps) {
   if (!isReady) return null;
 
   return (
-    <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
-      <SafeAreaProvider onLayout={onLayoutRootView}>
-        <GestureHandlerRootView>
-          <PaperProvider theme={theme}>
-            <NotificationProvider>
-              <BottomSheetModalProvider>
-                <Page isDark={isDark} themeMode={themeMode} saveTheme={saveTheme} theme={theme} />
-              </BottomSheetModalProvider>
-            </NotificationProvider>
-          </PaperProvider>
-        </GestureHandlerRootView>
-      </SafeAreaProvider>
-    </TouchableWithoutFeedback>
+    <>
+      <StatusBar translucent style={statsTheme} />
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
+        <SafeAreaProvider onLayout={onLayoutRootView}>
+          <GestureHandlerRootView>
+            <PaperProvider theme={theme}>
+              <NotificationProvider>
+                <BottomSheetModalProvider>
+                  <Page isDark={isDark} themeMode={themeMode} saveTheme={saveTheme} theme={theme} />
+                </BottomSheetModalProvider>
+              </NotificationProvider>
+            </PaperProvider>
+          </GestureHandlerRootView>
+        </SafeAreaProvider>
+      </TouchableWithoutFeedback>
+    </>
   );
 }
 
