@@ -8,9 +8,9 @@ import { Log } from '../library/log';
 import { deleteSession, getHistory } from '../library/db';
 import { getMysteryIndex } from '../library/model/mysteries';
 import { getDateTime, getTimeElapsed } from '../library/dateTime';
-import { Notifier, NotifierComponents } from 'react-native-notifier';
 import Animated, { FadeIn, FadeOut } from 'react-native-reanimated';
 import { ScrollView } from 'react-native-gesture-handler';
+import { useNotification } from './notification/NotificationContext';
 
 interface HistoryProps {
     theme: MD3Theme;
@@ -22,28 +22,17 @@ export default function History({ theme, showHistory, setShowHistory }: HistoryP
     const [ready, setReady] = useState<boolean>(false);
     const [sessions, setSessions] = useState<Session[]>([]);
     const [index, setIndex] = useState<number>(-1);
+    const {showNotification} = useNotification();
 
     const del = async (id: number, index: number) => {
         const d = await deleteSession(id);
         if (d) {
-            // Notifier.showNotification({
-            //     title: i18n.t("SUCCESS"),
-            //     description: i18n.t("SESS_DEL"),
-            //     Component: NotifierComponents.Alert,
-            //     componentProps: {
-            //         alertType: 'success',
-            //     }
-            // });
             setSessions(sessions.filter((x, i) => i != index));
         }
         else {
-            Notifier.showNotification({
-                title: i18n.t("ERROR"),
-                description: i18n.t("SESS_NDEL"),
-                Component: NotifierComponents.Alert,
-                componentProps: {
-                    alertType: 'error',
-                }
+            showNotification({
+                message: i18n.t("SESS_NDEL"),
+                type: 'error',
             });
         }
     }
@@ -108,10 +97,11 @@ export default function History({ theme, showHistory, setShowHistory }: HistoryP
                 {ready && <ScrollView style={{
                     width: '100%',
                     paddingHorizontal: 20,
+                    paddingTop: 20,
                     paddingBottom: 20,
                     borderRadius: Site.BORDER_RADIUS,
                 }}>
-                    {!!sessions.length && sessions.map((s, i) => <Card onPress={() => { setIndex(index == i ? -1 : i) }} mode='elevated' style={{ marginBottom: 20, borderRadius: Site.BORDER_RADIUS }} key={'s' + i}>
+                    {!!sessions.length && sessions.map((s, i) => <Card onPress={() => { setIndex(index == i ? -1 : i) }} mode='elevated' style={{ marginBottom: 20, borderRadius: Site.BORDER_RADIUS,backgroundColor:theme.colors.surface, }} key={'s' + i}>
                         <Card.Title titleVariant='titleLarge' subtitleVariant='labelSmall' titleStyle={{ marginBottom: 10, marginTop: 20, fontFamily: 'secondary2' }} subtitleStyle={{ fontFamily: 'secondary2', marginBottom: 5, color: theme.colors.primary }}
                             subtitle={i18n.t("TIMER", { duration: getTimeElapsed(s.start || 0, s.stop || 0), timestamp: getDateTime(s.start || 0) })}
                             title={s.is_dm ? i18n.t('DIVINE_MERCY') : i18n.t(`MYSTERIES.NAME_${getMysteryIndex(s.start || 0)}`)}

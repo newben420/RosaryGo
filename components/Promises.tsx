@@ -49,7 +49,7 @@ export default function Promises({ theme, showPromises, setShowPromises }: Promi
                     paddingBottom: 20,
                     borderRadius: Site.BORDER_RADIUS,
                 }}>
-                    {((new Array(15)).fill(1)).map((s, i) => <Card mode='elevated' style={{ marginBottom: 20, borderRadius: Site.BORDER_RADIUS }} key={'s' + i}>
+                    {((new Array(15)).fill(1)).map((s, i) => <Card mode='elevated' style={{ marginBottom: 20, borderRadius: Site.BORDER_RADIUS, backgroundColor: theme.colors.surface }} key={'s' + i}>
                         <Card.Content><Text selectable variant='bodyLarge' style={{ fontFamily: 'secondary2', marginBottom: 10, }}>{i18n.t("PROM.P" + (i + 1))}</Text></Card.Content>
                     </Card>)}
                 </ScrollView>

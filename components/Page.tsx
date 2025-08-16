@@ -12,7 +12,6 @@ import MyBottomSheet from './MyBottomSheet';
 import { clearUnfinishedSessions, finishSession, getSessions, saveNewSession } from '../library/db';
 import { Session } from '../library/model/session';
 import Intention from './Intention';
-import { Notifier, NotifierComponents } from 'react-native-notifier';
 import ConfirmDialog from './ConfirmDialog';
 import { generatePages, PageContent } from '../library/model/control';
 import Animated, { FadeIn, FadeOut, SlideOutLeft, SlideInRight } from 'react-native-reanimated';
@@ -22,6 +21,7 @@ import Promises from './Promises';
 import Welcome from './Welcome';
 import { CustomLightTheme as MD3LightTheme, CustomDarkTheme as MD3DarkTheme } from '../library/themes';
 import { ScrollView } from 'react-native-gesture-handler';
+import { useNotification } from './notification/NotificationContext';
 
 interface PageProps {
     theme: MD3Theme;
@@ -49,6 +49,7 @@ export default function Page({ theme, saveTheme, themeMode, isDark }: PageProps)
     const [showHistory, setShowHistory] = useState<boolean>(false);
     const [showPromises, setShowPromises] = useState<boolean>(false);
     const [showWelcome, setShowWelcome] = useState<boolean>(false);
+    const {showNotification} = useNotification();
     const pages: Record<string, PageContent> = useMemo(() => {
         const p = session ? generatePages(session) : {};
         return p;
@@ -104,12 +105,9 @@ export default function Page({ theme, saveTheme, themeMode, isDark }: PageProps)
     const finish = () => {
         let f;
         const fin = async () => {
-            Notifier.showNotification({
-                description: i18n.t("CONGRATS"),
-                Component: NotifierComponents.Alert,
-                componentProps: {
-                    alertType: 'success',
-                }
+            showNotification({
+                message: i18n.t("CONGRATS"),
+                type: 'success',
             });
             await finishSession(Date.now());
             await clearUnfinishedSessions();
@@ -146,38 +144,22 @@ export default function Page({ theme, saveTheme, themeMode, isDark }: PageProps)
             start: Date.now(),
         });
         if (saved) {
-            // Notifier.showNotification({
-            //     title: i18n.t("SUCCESS"),
-            //     description: i18n.t("NEW_SESS_SUCC"),
-            //     Component: NotifierComponents.Alert,
-            //     componentProps: {
-            //         alertType: 'success',
-            //     }
-            // });
             setSession(saved);
             next();
         }
         else {
-            Notifier.showNotification({
-                title: i18n.t("ERROR"),
-                description: i18n.t("NEW_SESS_ERR"),
-                Component: NotifierComponents.Alert,
-                componentProps: {
-                    alertType: 'error',
-                }
+            showNotification({
+                message: i18n.t("NEW_SESS_ERR"),
+                type: 'error',
             });
         }
         setStarting(false);
     }
 
     const toggleDM = () => {
-        Notifier.showNotification({
-            title: i18n.t("MODE_CHANGED"),
-            description: i18n.t("MODE_CHANGED_BODY", { prayer: i18n.t(!dm ? 'DIVINE_MERCY' : 'ROSARY') }),
-            Component: NotifierComponents.Alert,
-            componentProps: {
-                alertType: 'success',
-            }
+        showNotification({
+            message: i18n.t("MODE_CHANGED_BODY", { prayer: i18n.t(!dm ? 'DIVINE_MERCY' : 'ROSARY') }),
+            type: 'success',
         });
         AsyncStorage.setItem(StorageKeys.DM, !dm ? "YES" : "NO");
         setDM(!dm);
@@ -194,7 +176,7 @@ export default function Page({ theme, saveTheme, themeMode, isDark }: PageProps)
     return (
         <ImageBackground source={activeIndex ? '' : dm ? require('./../assets/img/dmbg.png') : require('./../assets/img/hrbg.png')} style={{ flex: 1, width: '100%', height: '100%', backgroundColor: theme.colors.background }} imageStyle={{ resizeMode: 'cover' }}>
             <View style={{ ...style.container, backgroundColor: !!activeIndex ? theme.colors.background : theme.colors.backdrop }}>
-                <Appbar.Header theme={!activeIndex ? MD3DarkTheme : theme} style={{ ...style.header, backgroundColor: 'transparent', paddingRight: !!activeIndex ? 0 : 0, }} mode='small' statusBarHeight={60} elevated={false}>
+                <Appbar.Header theme={!activeIndex ? MD3DarkTheme : theme} style={{ ...style.header, backgroundColor: 'transparent', paddingRight: !!activeIndex ? 0 : 0, }} mode='small' elevated={false}>
                     <Appbar.Content title={p.title ? i18n.t(p.title) : Site.BRAND} />
                     <Appbar.Action onPress={() => setMenu(true)} icon={menu ? 'close' : !!activeIndex ? 'dots-vertical' : 'dots-horizontal-circle'}></Appbar.Action>
                 </Appbar.Header>

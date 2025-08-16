@@ -14,4 +14,6 @@ export class Site {
     static BORDER_RADIUS: number = parseInt(ENV.BORDER_RADIUS) || 15;
     static TRANSITION_MS: number = parseInt(ENV.TRANSITION_MS) || 300;
     static APP_URL: string = ENV.APP_URL || "";
+    static SRC: string = ENV.SRC || "GBM Apps";
+    static YEAR: number = parseInt(ENV.YEAR) || (new Date()).getFullYear();
 }

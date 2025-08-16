@@ -3,6 +3,10 @@ import {
     MD3DarkTheme as DarkTheme,
 } from "react-native-paper";
 
+export const extraColors = {
+    success: '#009300',
+}
+
 export const CustomLightTheme = {
     ...LightTheme,
     colors: {
@@ -27,7 +31,7 @@ export const CustomDarkTheme = {
         primary: '#CC8FDD',
         onPrimary: '#1B0F22',
         background: '#0C0C0F',
-        surface: '#18141F',
+        surface: '#141418',
         surfaceVariant: '#211B2D',
         onSurface: '#EAE6F3',
         secondary: '#B8A1DC',

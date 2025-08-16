@@ -16,10 +16,10 @@ import Page from "./components/Page";
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { BottomSheetModalProvider } from "@gorhom/bottom-sheet";
 import { ThemeMode } from "./library/themeMode";
-import { NotifierWrapper } from "react-native-notifier";
 import { CustomDarkTheme, CustomLightTheme } from "./library/themes";
 SplashScreen.preventAutoHideAsync();
 import * as Font from 'expo-font';
+import { NotificationProvider } from "./components/notification/NotificationContext";
 
 
 
@@ -65,13 +65,13 @@ function MainApp({ isReady, onLayoutRootView }: MainAppProps) {
     <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
       <SafeAreaProvider onLayout={onLayoutRootView}>
         <GestureHandlerRootView>
-          <NotifierWrapper>
-            <PaperProvider theme={theme}>
+          <PaperProvider theme={theme}>
+            <NotificationProvider>
               <BottomSheetModalProvider>
                 <Page isDark={isDark} themeMode={themeMode} saveTheme={saveTheme} theme={theme} />
               </BottomSheetModalProvider>
-            </PaperProvider>
-          </NotifierWrapper>
+            </NotificationProvider>
+          </PaperProvider>
         </GestureHandlerRootView>
       </SafeAreaProvider>
     </TouchableWithoutFeedback>

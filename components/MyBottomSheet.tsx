@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { View, StyleSheet, Platform, Share, Linking } from 'react-native';
-import { MD3Theme, List, Divider } from 'react-native-paper';
+import { MD3Theme, List, Divider, Text } from 'react-native-paper';
 import { BottomSheetBackdrop, BottomSheetBackdropProps, BottomSheetHandle, BottomSheetHandleProps, BottomSheetModal, BottomSheetView } from '@gorhom/bottom-sheet';
 import { i18n, locales } from '../library/i18n';
 import { ThemeMode } from '../library/themeMode';
@@ -177,6 +177,15 @@ export default function MyBottomSheet({ theme, saveTheme, themeMode, menu, setMe
                             left={props => <List.Icon {...props} icon="star" />}
                         />
                     </List.Section>
+                    <View style={{
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        padding: 20,
+                        paddingVertical: 40,
+                        opacity: 0.5,
+                    }}>
+                        <Text variant='bodySmall'>{Site.SRC} &copy; {Site.YEAR}</Text>
+                    </View>
                 </View>
             </BottomSheetView>
         </BottomSheetModal>
